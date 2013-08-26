@@ -42,7 +42,13 @@ public class TexFloor {
 		groudTransform.origin.set(new Vector3f(0, yOffset, 0));
 		Vector3f localInertia = new Vector3f(0,0,0);
 		DefaultMotionState myMotionState = new DefaultMotionState(groudTransform);
-		RigidBodyConstructionInfo rbInfo = new RigidBodyConstructionInfo(0, myMotionState, groundShape, localInertia);
+		RigidBodyConstructionInfo rbInfo = new RigidBodyConstructionInfo
+				(
+					0, 
+					myMotionState, 
+					groundShape, 
+					localInertia
+				);
 		RigidBody body = new RigidBody(rbInfo);
 		body.setRestitution(0.4f);
 		body.setFriction(0.8f);
