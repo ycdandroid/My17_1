@@ -1,11 +1,13 @@
 package com.example.my17_1;
 
+import java.io.Console;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 
 import android.opengl.GLES20;
+import android.util.Log;
 
 public class TextureRect {
 	
@@ -65,6 +67,8 @@ public class TextureRect {
 	}
 	
 	public void initShader(int mProgram){
+
+		this.mProgram = mProgram;
 		muMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
 		muMMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMMatrix");
 		muCameraHandle = GLES20.glGetUniformLocation(mProgram, "uCamera");
@@ -72,6 +76,7 @@ public class TextureRect {
 		
 		maPositionHandle = GLES20.glGetAttribLocation(mProgram, "aPosition");
 		maTexCoorHandle = GLES20.glGetAttribLocation(mProgram, "aTexCoor");
+//		Log.w("texturerect-inishader", maTexCoorHandle+"------>"+maPositionHandle);
 	}
 	
 	public void drawSelf(int texId){

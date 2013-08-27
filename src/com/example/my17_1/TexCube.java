@@ -25,7 +25,7 @@ public class TexCube {
 	 * @param colShape 碰撞形状抽象类
 	 * @param dynamicsWorld 
 	 * @param mass
-	 * @param cx
+	 * @param cx 初始的x坐标
 	 * @param cy
 	 * @param cz
 	 */
@@ -54,10 +54,14 @@ public class TexCube {
 		body.setFriction(0.8f);
 		dynamicsWorld.addRigidBody(body);//把刚体加入进动态物理世界
 		
-		tr = new TextureRect(mProgram, halfSize);
+		tr = new TextureRect(mProgram,halfSize);
 	}
 	
 	public void drawSelf(int[] texIda){
+		
+		//这一步很重要，如果不重新初始化，那么它的程序永远是最开始的，
+		//不会包含新加入的顶点信息,也就是新的箱子不会被画出来
+		tr.initShader(mProgram);//纹理矩形初始化着色器
 		int texId = texIda[0];
 		if (!body.isActive()) {//未激活时，采用静止时的纹理
 			texId = texIda[1];

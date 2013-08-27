@@ -1,7 +1,6 @@
 package com.example.my17_1;
 
 import android.content.res.Resources;
-import android.util.Log;
 
 public class ShaderManager {
 
@@ -14,12 +13,10 @@ public class ShaderManager {
 	static String[] mFragmentShader = new String[shaderCount];
 	static int[] program = new int[shaderCount];
 	
-	public static void loadCodeFrmFile(Resources r){
+	public static void loadCodeFromFile(Resources r){
 		for (int i = 0; i < shaderCount; i++) {
 			mVertexShader[i] = ShaderUtil.loadFromAssetsFile(shaderName[i][0], r);
-			mFragmentShader[i] = ShaderUtil.loadFromAssetsFile(shaderName[i][0], r);
-			Log.i("ver",mVertexShader[i]);
-			Log.i("frag",mFragmentShader[i]);
+			mFragmentShader[i] = ShaderUtil.loadFromAssetsFile(shaderName[i][1], r);
 		}
 	}
 	
